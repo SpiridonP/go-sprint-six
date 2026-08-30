@@ -24,10 +24,10 @@ func UploadHandler(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	file, header, err := req.FormFile("file")
+	file, header, err := req.FormFile("myFile")
 	if err != nil {
 		log.Printf("[WARN] FormFile error (client issue): %v", err)
-		http.Error(res, "No file uploaded: "+err.Error(), http.StatusBadRequest) // ✅ 400
+		http.Error(res, "No file uploaded: "+err.Error(), http.StatusBadRequest)
 		return
 	}
 	defer file.Close()
